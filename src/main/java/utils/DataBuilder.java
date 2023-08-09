@@ -17,5 +17,17 @@ public class DataBuilder {
 		
 		return bodyBuilder;
 	}
+	
+	public static JSONObject updateBuildUser() {		
+		JSONObject bodyBuilder = new JSONObject();
+		Faker fake = new Faker();
+		
+		bodyBuilder.put("name", fake.name().firstName());
+		bodyBuilder.put("email", fake.internet().safeEmailAddress());
+		bodyBuilder.put("age", fake.number().numberBetween(5, 130));
+		bodyBuilder.put("gender", "male");
+		
+		return bodyBuilder;
+	}
 
 }
