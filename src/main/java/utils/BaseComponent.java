@@ -11,7 +11,9 @@ public class BaseComponent {
 
 	@BeforeClass
 	public void setup() {
-		RestAssured.baseURI = "https://keytrcrud.herokuapp.com/";
+		//RestAssured.baseURI = "https://keytrcrud.herokuapp.com/";
+		
+		RestAssured.baseURI = "https://swapi.dev";
 	}
 
 	public static Response doPostRequest(String path, String reqBody, int statusCode) {
