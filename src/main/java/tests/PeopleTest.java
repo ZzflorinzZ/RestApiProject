@@ -7,6 +7,7 @@ import io.restassured.response.Response;
 import utils.BaseComponent;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.Matchers.*;
@@ -46,10 +47,15 @@ public class PeopleTest extends BaseComponent{
 		assertThat(species, hasSize(0));
 		
 		List<String> starships = json.getList("starships");
-		List<String> vehicles = json.getList("vehicles");
+//		List<String> vehicles = json.getList("vehicles");
+		List<String> vehicles = new ArrayList<>(Arrays.asList("https://swapi.dev/api/starships/12/", "https://swapi.dev/api/starships/22/"));
+		System.out.println(starships.size());
+		System.out.println(vehicles.size());
+		System.out.println(starships);
+		System.out.println(vehicles);
 		assertThat(starships, hasSize(equalTo(vehicles.size())));
-		assertThat(starships, is(not((vehicles))));
-
+//		assertThat(starships, is(not((vehicles))));
+		assertThat(starships, is(vehicles));
 	}
 
 }

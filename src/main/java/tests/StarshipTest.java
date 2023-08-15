@@ -27,10 +27,10 @@ public class StarshipTest extends BaseComponent{
 				.or(hasItem("https://swapi.dev/api/films/6/"))
 				.or(hasItem("https://swapi.dev/api/films/5/")));
 		
-//		assertThat(films, both(is(not(empty()))).and(is(instanceOf(String.class))));
+		assertThat(films, is(not(emptyCollectionOf(String.class))));
 		
 		List<String> pilots = json.getList("pilots");
-//		assertThat(pilots, both(is(empty())).and(is(instanceOf(String.class))));
+		assertThat(pilots, is(emptyCollectionOf(String.class)));
 		
 		String model = json.getString("model");
 		assertThat(model, both(containsString("Imperial")).and(containsString("Destroyer")));

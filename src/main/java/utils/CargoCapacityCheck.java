@@ -8,7 +8,7 @@ public class CargoCapacityCheck extends TypeSafeMatcher<String>{
 
 	@Override
 	public void describeTo(Description description) {
-		description.appendText("expected to be Integer but got: ");
+		description.appendText("Cargo capacity is less than: ");
 		
 	}
 
