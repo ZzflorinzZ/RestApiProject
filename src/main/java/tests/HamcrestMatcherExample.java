@@ -14,7 +14,7 @@ import utils.BaseComponent;
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.MatcherAssert.*;
 
-import static utils.IntegerChecker.integerOnly;;
+import static utils.IntegerChecker.integerOnly;
 
 public class HamcrestMatcherExample extends BaseComponent{
 	
