@@ -15,6 +15,8 @@ import static org.hamcrest.MatcherAssert.*;
 
 public class JsonPathToDoTest extends BaseComponentHomeworkEx2{
 	
+	String id;
+	
 	@Test(priority = 1)
 	public void postToDo() throws IOException{
 		
@@ -38,8 +40,7 @@ public class JsonPathToDoTest extends BaseComponentHomeworkEx2{
 		String title = jsonFromFile.getString("title");
 		System.out.println(title);
 
-//		String id = json.getString("find{it.title == jsonFromFile.getString(\"title\")}._id");
-		String id = json.getString("find{it.title == '"+title+"'}._id");
+		id = json.getString("find{it.title == '"+title+"'}._id");
 		System.out.println(id);	
 	}
 }
