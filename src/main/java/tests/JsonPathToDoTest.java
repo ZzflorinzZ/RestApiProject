@@ -1,8 +1,10 @@
 package tests;
 
 import java.io.File;
+
 import java.io.IOException;
 
+import org.json.simple.JSONObject;
 import org.testng.annotations.Test;
 
 import io.restassured.path.json.JsonPath;
@@ -13,14 +15,17 @@ import utils.DataBuilder;
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.MatcherAssert.*;
 
-public class JsonPathToDoTest extends BaseComponentHomeworkEx2{
+
+public class JsonPathToDoTest extends BaseComponentHomeworkEx2 {
 	
+	JSONObject bodyBuilder = new JSONObject();
 	String id;
 	
+	
 	@Test(priority = 1)
-	public void postToDo() throws IOException{
+	public void postToDo() {
 		
-		Response result = doPost(DataBuilder.postToDo());
+		Response result = doPost(DataBuilder.postToDo(bodyBuilder, "todo.json"));
 		System.out.println(result.asPrettyString());
 		
 		JsonPath json = result.jsonPath();
@@ -42,5 +47,15 @@ public class JsonPathToDoTest extends BaseComponentHomeworkEx2{
 
 		id = json.getString("find{it.title == '"+title+"'}._id");
 		System.out.println(id);	
+	}
+	
+	@Test(priority = 3)
+	public void deleteToDo() {
+		Response result = doDelete(id);
+		System.out.println(result.asPrettyString());
+		
+		JsonPath json = result.jsonPath();
+		String msg = json.getString("msg");
+		assertThat(msg, is(equalTo("Event deleted.")));		
 	}
 }

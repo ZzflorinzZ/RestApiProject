@@ -8,7 +8,7 @@ import org.json.simple.JSONObject;
 
 import com.github.javafaker.Faker;
 
-public class DataBuilder {
+public class DataBuilder extends JsonUtils{
 	
 	public static JSONObject buildUser() {		
 		JSONObject bodyBuilder = new JSONObject();
@@ -33,32 +33,15 @@ public class DataBuilder {
 		
 		return bodyBuilder;
 	}
+	 
 	
-	
-	public static File postToDo() throws IOException {		
-		JSONObject bodyBuilder = new JSONObject();
+	public static File postToDo(JSONObject jsonObjectName, String jsonFileName){		
 		Faker fake = new Faker();
+		jsonObjectName.put("title", fake.name().firstName());
+		jsonObjectName.put("body", fake.internet().safeEmailAddress());
 		
-		bodyBuilder.put("title", fake.name().firstName());
-		bodyBuilder.put("body", fake.internet().safeEmailAddress());
-		
-//		FileWriter file = null;
-		try {
-			FileWriter file = new FileWriter("todo.json");
-			file.write(bodyBuilder.toJSONString());
-			file.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}  
-		File fisier = new File ("todo.json");
-/*		
-		try (FileWriter file = new FileWriter("todo.json")){
-			file.write(bodyBuilder.toJSONString());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}  
-*/		
-		return fisier; 
+		writeJsonFile(jsonObjectName, jsonFileName); 
+		return returnJsonFile(jsonFileName); 	
 	}
 
 }
