@@ -43,5 +43,37 @@ public class DataBuilder extends JsonUtils{
 		writeJsonFile(jsonObjectName, jsonFileName); 
 		return returnJsonFile(jsonFileName); 	
 	}
+	
+	public static JSONObject buildToken() {
+		JSONObject buildToken = new JSONObject();
+		buildToken.put("username", "admin");
+		buildToken.put("password", "password123");
+		return buildToken;
+	}
+	
+	public static JSONObject buildBooking() {
+		JSONObject buildBooking = new JSONObject();
+		buildBooking.put("firstname", "Jim");
+		buildBooking.put("lastname", "Brown");
+		buildBooking.put("totalprice", "111");
+		buildBooking.put("depositpaid", "true");	
+			JSONObject BookingDates = new JSONObject();
+			BookingDates.put("checkin", "2018-01-01");
+			BookingDates.put("checkout", "2019-01-01");	
+		buildBooking.put("bookingdates", BookingDates);
+		buildBooking.put("additionalneeds", "Breakfast");
+
+		return buildBooking;
+	}
+	
+	public static JSONObject buildTodo() {
+		Faker fake = new Faker();
+
+		JSONObject buildToken = new JSONObject();
+		buildToken.put("title" , fake.leagueOfLegends().champion());
+		buildToken.put("body" , fake.chuckNorris().fact());
+
+		return buildToken;
+	}
 
 }
