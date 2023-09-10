@@ -37,12 +37,14 @@ public class HomeworkCurs40Ex2 {
 				.extract().response();
 		
 		System.out.println(resp.asPrettyString());
-		
+/*		
 		try {
-		assertThat(resp.asString(), matchesJsonSchemaInClasspath("negativeSchemaC40Ex2.json"));		//nu am stiut cum sa scriu ca nu match-uieste schema din fisier
+		assertThat(resp.asString(), matchesJsonSchemaInClasspath("negativeSchemaC40Ex2.json"));		
 		} catch (NoSuchMethodError e) {
 			System.out.println(e);
 			assertTrue(e.toString().contains("org.hamcrest.Description"));
 		}
+*/		
+		assertThat(resp.asString(), matchesJsonSchemaInClasspath("negativeSchemaC40Ex2.json"));	
 	}
 }

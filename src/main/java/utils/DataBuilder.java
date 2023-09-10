@@ -69,11 +69,11 @@ public class DataBuilder extends JsonUtils{
 	public static JSONObject buildTodo() {
 		Faker fake = new Faker();
 
-		JSONObject buildToken = new JSONObject();
-		buildToken.put("title" , fake.leagueOfLegends().champion());
-		buildToken.put("body" , fake.chuckNorris().fact());
+		JSONObject buildToDo = new JSONObject();
+		buildToDo.put("title" , fake.leagueOfLegends().champion());
+		buildToDo.put("body" , fake.chuckNorris().fact());
 
-		return buildToken;
+		return buildToDo;
 	}
 
 }
